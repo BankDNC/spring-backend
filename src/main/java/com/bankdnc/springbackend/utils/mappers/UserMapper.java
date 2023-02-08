@@ -1,16 +1,17 @@
 package com.bankdnc.springbackend.utils.mappers;
 
-import com.bankdnc.springbackend.model.documents.Userr;
+import com.bankdnc.springbackend.model.documents.User;
 import com.bankdnc.springbackend.model.requests.UserRequest;
 import com.bankdnc.springbackend.model.response.UserResponse;
+import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+@AllArgsConstructor
 public class UserMapper {
+    private static PasswordEncoder passwordEncoder;
 
-    private UserMapper() {
-        throw new IllegalStateException("Utility class");
-    }
-    public static Userr userRequestToUser(UserRequest userRequest) {
-        return Userr.builder()
+    public static User userRequestToUser(UserRequest userRequest) {
+        return User.builder()
                 .name(userRequest.getName())
                 .lastName(userRequest.getLastName())
                 .email(userRequest.getEmail())
@@ -20,13 +21,13 @@ public class UserMapper {
                 .build();
     }
 
-    public static UserResponse userToUserResponse(Userr userr) {
+    public static UserResponse userToUserResponse(User user) {
         return UserResponse.builder()
-                .name(userr.getName())
-                .lastName(userr.getLastName())
-                .email(userr.getEmail())
-                .dni(userr.getDni())
-                .phone(userr.getPhone())
+                .name(user.getName())
+                .lastName(user.getLastName())
+                .email(user.getEmail())
+                .dni(user.getDni())
+                .phone(user.getPhone())
                 .build();
     }
 }
