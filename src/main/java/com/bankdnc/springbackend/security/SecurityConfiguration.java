@@ -43,8 +43,17 @@ public class SecurityConfiguration {
         http
                 .csrf().disable()
                 .authorizeExchange(auth -> {
+                    //auth
                     auth.pathMatchers(ENDPOINT_AUTH+REGISTER).permitAll();
                     auth.pathMatchers(ENDPOINT_AUTH+LOGIN).permitAll();
+
+                    //swagger
+                    auth.pathMatchers("/v3/api-docs/**").permitAll();
+                    auth.pathMatchers("/swagger-resources/**").permitAll();
+                    auth.pathMatchers("/swagger-ui.html").permitAll();
+                    auth.pathMatchers("/webjars/**").permitAll();
+                    auth.pathMatchers("/swagger-ui/**").permitAll();
+
                     auth.anyExchange().authenticated();
                 })
                 .addFilterAt(jwtAuthFilter, SecurityWebFiltersOrder.AUTHENTICATION)
