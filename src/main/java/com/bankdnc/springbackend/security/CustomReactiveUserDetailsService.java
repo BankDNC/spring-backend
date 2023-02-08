@@ -1,10 +1,10 @@
 package com.bankdnc.springbackend.security;
 
+import com.bankdnc.springbackend.model.documents.User;
 import com.bankdnc.springbackend.model.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -18,6 +18,10 @@ public class CustomReactiveUserDetailsService implements ReactiveUserDetailsServ
     public Mono<UserDetails> findByUsername(String username) {
         return userRepository.findByEmail(username)
                 .cast(UserDetails.class)
-                .switchIfEmpty(Mono.error(new UsernameNotFoundException("User not found")));
+                .switchIfEmpty(Mono.just(User.builder()
+                        .email("")
+                        .password("")
+                        .build()));
     }
+
 }

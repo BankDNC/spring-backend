@@ -45,7 +45,7 @@ public class AuthServiceImpl implements AuthService {
                     user.setRole(Role.USER);
 
                     return userRepository.save(user)
-                            .map(userDetails -> ResponseEntity.ok(new TokenResponse(jwtService.generateToken(userDetails))));
+                            .map(userDetails -> new ResponseEntity<>(new TokenResponse(jwtService.generateToken(userDetails)), HttpStatus.CREATED));
                 });
 
     }

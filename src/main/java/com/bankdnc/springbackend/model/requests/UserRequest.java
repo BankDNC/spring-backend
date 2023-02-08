@@ -1,11 +1,11 @@
 package com.bankdnc.springbackend.model.requests;
 
 import jakarta.validation.constraints.*;
+import lombok.Builder;
 import lombok.Data;
-import lombok.Setter;
 
 @Data
-@Setter
+@Builder
 public class UserRequest {
     @NotNull
     @NotEmpty(message = "el nombre no puede ser nulo")
