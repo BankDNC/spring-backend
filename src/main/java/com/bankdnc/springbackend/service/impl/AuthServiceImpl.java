@@ -7,16 +7,14 @@ import com.bankdnc.springbackend.model.repository.UserRepository;
 import com.bankdnc.springbackend.model.requests.LoginRequest;
 import com.bankdnc.springbackend.model.requests.UserRequest;
 import com.bankdnc.springbackend.model.response.TokenResponse;
-import com.bankdnc.springbackend.model.response.UserResponse;
 import com.bankdnc.springbackend.security.JwtService;
 import com.bankdnc.springbackend.service.AuthService;
 import com.bankdnc.springbackend.utils.mappers.UserMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,11 +27,11 @@ public class AuthServiceImpl implements AuthService {
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
     private JwtService jwtService;
-    private AuthenticationManager authenticationManager;
+    private ReactiveUserDetailsService userDetailsService;
 
     @Transactional
     @Override
-    public Mono<ResponseEntity<UserResponse>> register(UserRequest userRequest) {
+    public Mono<ResponseEntity<TokenResponse>> register(UserRequest userRequest) {
         Mono<Boolean> existsEmail = userRepository.existsByEmail(userRequest.getEmail());
         Mono<Boolean> existsDni = userRepository.existsByDni(userRequest.getDni());
         return Mono.zip(existsEmail, existsDni)
@@ -47,27 +45,24 @@ public class AuthServiceImpl implements AuthService {
                     user.setRole(Role.USER);
 
                     return userRepository.save(user)
-                            .map(UserMapper::userToUserResponse)
-                            .map(userResponse -> new ResponseEntity<>(userResponse, HttpStatus.CREATED));
+                            .map(userDetails -> ResponseEntity.ok(new TokenResponse(jwtService.generateToken(userDetails))));
                 });
 
     }
 
     @Override
     public Mono<ResponseEntity<TokenResponse>> login(LoginRequest loginRequest) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequest.getEmail(),
-                        loginRequest.getPassword()
-                )
-        );
+        Mono<UserDetails> foundUser = userDetailsService.findByUsername(loginRequest.getEmail());
 
-        User user = userRepository.findByEmail(loginRequest.getEmail())
-                .switchIfEmpty(Mono.error(new UsernameNotFoundException("Usuario no encontrado"))).block();
-
-        String token = jwtService.generateToken(user);
-
-        return Mono.just(new ResponseEntity<>(new TokenResponse(token), HttpStatus.OK));
+        return foundUser.
+                flatMap(userDetails -> {
+                    if (passwordEncoder.matches(loginRequest.getPassword(), userDetails.getPassword())) {
+                        return Mono.just(ResponseEntity.ok(new TokenResponse(jwtService.generateToken(userDetails)))
+                        );
+                    }
+                    return Mono.just(ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new TokenResponse()));
+                })
+                .defaultIfEmpty(ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new TokenResponse()));
 
     }
 }

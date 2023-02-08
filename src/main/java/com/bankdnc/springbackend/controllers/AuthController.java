@@ -3,7 +3,6 @@ package com.bankdnc.springbackend.controllers;
 import com.bankdnc.springbackend.model.requests.LoginRequest;
 import com.bankdnc.springbackend.model.requests.UserRequest;
 import com.bankdnc.springbackend.model.response.TokenResponse;
-import com.bankdnc.springbackend.model.response.UserResponse;
 import com.bankdnc.springbackend.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping(REGISTER)
-    public Mono<ResponseEntity<UserResponse>> register(@Valid @RequestBody UserRequest userRequest){
+    public Mono<ResponseEntity<TokenResponse>> register(@Valid @RequestBody UserRequest userRequest){
         return authService.register(userRequest);
     }
 
