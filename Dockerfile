@@ -5,6 +5,8 @@ COPY ./pom.xml .
 COPY ./.mvn ./.mvn
 COPY ./src ./src
 
+RUN chmod +x mvnw
+
 RUN ./mvnw clean package
 
 FROM openjdk:17-alpine
