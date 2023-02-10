@@ -10,4 +10,6 @@ public class Constant {
     public static final String ENDPOINT_AUTH = API_V1+"/auth";
     public static final String REGISTER = "/register";
     public static final String LOGIN = "/login";
+    public static final String ENDPOINT_ACCOUNT = API_V1+"/account";
+    public static final String CREATE_ACCOUNT = "/create";
 }

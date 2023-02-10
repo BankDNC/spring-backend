@@ -24,7 +24,13 @@ public class AuthManager implements ReactiveAuthenticationManager {
         return Mono.justOrEmpty(authentication)
                 .cast(BearerToken.class)
                 .flatMap(auth ->{
-                    String username = jwtService.extractUsername(auth.getCredentials());
+                    String username = null;
+                    try{
+                        username = jwtService.extractUsername(auth.getCredentials());
+                    }catch (Exception e){
+                        return Mono.error(new IllegalArgumentException("Token not valid"));
+                    }
+
                     Mono<UserDetails> foundUser = userDetailsService.findByUsername(username)
                             .defaultIfEmpty(new User());
 
