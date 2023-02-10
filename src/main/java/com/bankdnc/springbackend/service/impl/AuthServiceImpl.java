@@ -20,6 +20,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
+import java.util.HashMap;
+
 @Service
 @AllArgsConstructor
 public class AuthServiceImpl implements AuthService {
@@ -57,6 +59,14 @@ public class AuthServiceImpl implements AuthService {
         return foundUser.
                 flatMap(userDetails -> {
                     if (passwordEncoder.matches(loginRequest.getPassword(), userDetails.getPassword())) {
+                        if(userDetails instanceof User user){
+                            HashMap<String, Object> claims = new HashMap<>();
+                            claims.put("name", user.getName());
+                            claims.put("lastName", user.getLastName());
+                            claims.put("email", user.getEmail());
+                            return Mono.just(ResponseEntity.ok(new TokenResponse(jwtService.generateToken(userDetails, claims)))
+                            );
+                        }
                         return Mono.just(ResponseEntity.ok(new TokenResponse(jwtService.generateToken(userDetails)))
                         );
                     }
