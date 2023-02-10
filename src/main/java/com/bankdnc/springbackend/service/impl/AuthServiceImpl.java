@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
 import java.util.HashMap;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -47,7 +48,15 @@ public class AuthServiceImpl implements AuthService {
                     user.setRole(Role.USER);
 
                     return userRepository.save(user)
-                            .map(userDetails -> new ResponseEntity<>(new TokenResponse(jwtService.generateToken(userDetails)), HttpStatus.CREATED));
+                            .map(userDetails ->{
+                                Map<String, Object> claims = new HashMap<>();
+                                claims.put("id", userDetails.getId());
+                                claims.put("name", userDetails.getName());
+                                claims.put("lastName", userDetails.getLastName());
+                                claims.put("email", userDetails.getEmail());
+
+                                return new ResponseEntity<>(new TokenResponse(jwtService.generateToken(userDetails, claims)), HttpStatus.CREATED);
+                            });
                 });
 
     }
@@ -60,7 +69,8 @@ public class AuthServiceImpl implements AuthService {
                 flatMap(userDetails -> {
                     if (passwordEncoder.matches(loginRequest.getPassword(), userDetails.getPassword())) {
                         if(userDetails instanceof User user){
-                            HashMap<String, Object> claims = new HashMap<>();
+                            Map<String, Object> claims = new HashMap<>();
+                            claims.put("id", user.getId());
                             claims.put("name", user.getName());
                             claims.put("lastName", user.getLastName());
                             claims.put("email", user.getEmail());
