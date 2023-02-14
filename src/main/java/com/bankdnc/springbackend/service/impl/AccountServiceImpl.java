@@ -6,6 +6,7 @@ import com.bankdnc.springbackend.model.documents.Account;
 import com.bankdnc.springbackend.model.documents.User;
 import com.bankdnc.springbackend.model.repository.AccountRepository;
 import com.bankdnc.springbackend.model.repository.UserRepository;
+import com.bankdnc.springbackend.model.response.AccountEspResponse;
 import com.bankdnc.springbackend.model.response.AccountResponse;
 import com.bankdnc.springbackend.security.JwtService;
 import com.bankdnc.springbackend.service.AccountService;
@@ -76,6 +77,18 @@ public class AccountServiceImpl implements AccountService {
                             .map(newAccount ->
                                     ResponseEntity.status(HttpStatus.CREATED).build());
                 });
+    }
+
+    @Override
+    public Mono<ResponseEntity<AccountEspResponse>> getAccount(String token, String id) {
+        Mono<User> user = getUser(token);
+
+        return user
+                .flatMap(u -> accountRepository.findByUserAndId(u, id))
+                .map(AccountMapper::accountToAccountEspResponse)
+                .map(accountEspResponse -> ResponseEntity.status(HttpStatus.OK).body(accountEspResponse))
+                .defaultIfEmpty(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+
     }
 
     private Mono<User> getUser(String token) {

@@ -1,5 +1,6 @@
 package com.bankdnc.springbackend.controllers;
 
+import com.bankdnc.springbackend.model.response.AccountEspResponse;
 import com.bankdnc.springbackend.model.response.AccountResponse;
 import com.bankdnc.springbackend.service.AccountService;
 import lombok.AllArgsConstructor;
@@ -28,4 +29,11 @@ public class AccountsController {
     public Mono<ResponseEntity> createAccount(@RequestHeader("Authorization") String token, @PathVariable("account") String account) {
         return accountService.createAccount(token, account);
     }
+
+    @GetMapping("{id}")
+    public Mono<ResponseEntity<AccountEspResponse>> getAccount(@RequestHeader("Authorization") String token, @PathVariable("id") String id) {
+        return accountService.getAccount(token, id);
+    }
+
+
 }

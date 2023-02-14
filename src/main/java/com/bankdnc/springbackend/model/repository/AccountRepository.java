@@ -10,4 +10,5 @@ public interface AccountRepository extends ReactiveMongoRepository<Account, Stri
 
     Mono<Long> countByUser(User user);
     Flux<Account> findByUser(User user);
+    Mono<Account> findByUserAndId(User user, String id);
 }
