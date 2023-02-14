@@ -1,6 +1,7 @@
 package com.bankdnc.springbackend.utils.mappers;
 
 import com.bankdnc.springbackend.model.documents.Account;
+import com.bankdnc.springbackend.model.response.AccountEspResponse;
 import com.bankdnc.springbackend.model.response.AccountResponse;
 
 public class AccountMapper {
@@ -15,6 +16,17 @@ public class AccountMapper {
                 .typeAccount(account.getTypeAccount())
                 .numberAccount(account.getNumberAccount())
                 .balance(account.getBalance())
+                .build();
+    }
+
+    public static AccountEspResponse accountToAccountEspResponse(Account account) {
+        return AccountEspResponse.builder()
+                .id(account.getId())
+                .typeAccount(account.getTypeAccount())
+                .numberAccount(account.getNumberAccount())
+                .balance(account.getBalance())
+                .isExempt4x1000(account.isExempt4x1000())
+                .dateCreation(account.getDateCreation())
                 .build();
     }
 }
