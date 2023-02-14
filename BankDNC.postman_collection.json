@@ -1,0 +1,509 @@
+{
+	"info": {
+		"_postman_id": "1392b21b-64ca-4890-b095-835be8ab6bf1",
+		"name": "BankDNC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13791213"
+	},
+	"item": [
+		{
+			"name": "localhost",
+			"item": [
+				{
+					"name": "register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Carlos\",\r\n    \"lastName\":\"Obando\",\r\n    \"email\":\"correoo@corre.com\",\r\n    \"password\":\"12345678\",\r\n    \"dni\":\"1234561\",\r\n    \"phone\":\"3201111111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"correoo@corre.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "account register corriente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM4NjMwNCwiZXhwIjoxNjc2Mzg3NzQ0fQ.-jIyCaq4umDzCyFNWsgPzu58qPRkCYVC7gGwmdVcnrSNoMp1mUITgy2AvXUk_sLhMUzYuCY3qT_OnjXQGw14QQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/account/create/corriente",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"create",
+								"corriente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "account register ahorros",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM4NjMwNCwiZXhwIjoxNjc2Mzg3NzQ0fQ.-jIyCaq4umDzCyFNWsgPzu58qPRkCYVC7gGwmdVcnrSNoMp1mUITgy2AvXUk_sLhMUzYuCY3qT_OnjXQGw14QQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/account/create/ahorros",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"create",
+								"ahorros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get accounts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM4NjMwNCwiZXhwIjoxNjc2Mzg3NzQ0fQ.-jIyCaq4umDzCyFNWsgPzu58qPRkCYVC7gGwmdVcnrSNoMp1mUITgy2AvXUk_sLhMUzYuCY3qT_OnjXQGw14QQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/account",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjA0NDc0MywiZXhwIjoxNjc2MDQ2MTgzfQ._3lbpTEjsx64MR4d2PXT8aBW2zVcafmKi6pNNh-r9WreSJ6bP5DT_5uROZ-mhWY7TnfqA-LVyb0P7aafffedWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"URL\", \"localhost:8080\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Fly.io",
+			"item": [
+				{
+					"name": "register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Carlos\",\r\n    \"lastName\":\"Obando\",\r\n    \"email\":\"correoo@corre.com\",\r\n    \"password\":\"12345678\",\r\n    \"dni\":\"1234561\",\r\n    \"phone\":\"3201111111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"correoo@corre.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "account register corriente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM4NjMwNCwiZXhwIjoxNjc2Mzg3NzQ0fQ.-jIyCaq4umDzCyFNWsgPzu58qPRkCYVC7gGwmdVcnrSNoMp1mUITgy2AvXUk_sLhMUzYuCY3qT_OnjXQGw14QQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/account/create/corriente",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"create",
+								"corriente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "account register ahorros",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM4NjMwNCwiZXhwIjoxNjc2Mzg3NzQ0fQ.-jIyCaq4umDzCyFNWsgPzu58qPRkCYVC7gGwmdVcnrSNoMp1mUITgy2AvXUk_sLhMUzYuCY3qT_OnjXQGw14QQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/account/create/ahorros",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"create",
+								"ahorros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get accounts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTZiODc1MDYwZTc1NjVmNWMyNmExNiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjA2NTM5NiwiZXhwIjoxNjc2MDY2ODM2fQ.6zWbGvdxJM93YPQ19kt6aoQTqf1e-ZCL744b5yCwx5rbExuuWCGTZbv43emfGzWAPylS_w-gOo87FAiM2JJsog",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/account",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTZiODc1MDYwZTc1NjVmNWMyNmExNiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjA2NTM5NiwiZXhwIjoxNjc2MDY2ODM2fQ.6zWbGvdxJM93YPQ19kt6aoQTqf1e-ZCL744b5yCwx5rbExuuWCGTZbv43emfGzWAPylS_w-gOo87FAiM2JJsog",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/v1/auth/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.environment.set(\"URL\", \"https://bankdnc-backend.fly.dev\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
