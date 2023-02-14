@@ -15,4 +15,9 @@ public class ErrorHandler {
         return ProblemDetail.forStatusAndDetail(HttpStatus.valueOf(409), ex.getMessage());
     }
 
+    @ExceptionHandler(NoTypeAccountException.class)
+    public ProblemDetail handleNoTypeAccountException(NoTypeAccountException ex){
+        return ProblemDetail.forStatusAndDetail(HttpStatus.valueOf(406), ex.getMessage());
+    }
+
 }

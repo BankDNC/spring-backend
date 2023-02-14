@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface AccountService {
     Mono<ResponseEntity<List<AccountResponse>>> getAccounts(String token);
-    Mono<ResponseEntity> createAccount(String token);
+    Mono<ResponseEntity> createAccount(String token, String account);
 }

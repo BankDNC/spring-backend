@@ -24,8 +24,8 @@ public class AccountsController {
         return accountService.getAccounts(token);
     }
 
-    @PostMapping(CREATE_ACCOUNT)
-    public Mono<ResponseEntity> createAccount(@RequestHeader("Authorization") String token) {
-        return accountService.createAccount(token);
+    @PostMapping(CREATE_ACCOUNT+"/{account}")
+    public Mono<ResponseEntity> createAccount(@RequestHeader("Authorization") String token, @PathVariable("account") String account) {
+        return accountService.createAccount(token, account);
     }
 }

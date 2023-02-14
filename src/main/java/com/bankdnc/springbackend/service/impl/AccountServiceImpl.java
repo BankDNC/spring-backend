@@ -1,6 +1,7 @@
 package com.bankdnc.springbackend.service.impl;
 
 import com.bankdnc.springbackend.constans.TypeAccount;
+import com.bankdnc.springbackend.error.NoTypeAccountException;
 import com.bankdnc.springbackend.model.documents.Account;
 import com.bankdnc.springbackend.model.documents.User;
 import com.bankdnc.springbackend.model.repository.AccountRepository;
@@ -42,31 +43,38 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @Transactional
-    public Mono<ResponseEntity> createAccount(String token) {
+    public Mono<ResponseEntity> createAccount(String token, String account) {
         Mono<User> user = getUser(token);
 
         Mono<Account> accountSave = user
                 .map(u -> {
-            Account account = new Account();
-            account.setTypeAccount(TypeAccount.AHORRO);
-            account.setNumberAccount(UUID.randomUUID().toString());
-            account.setBalance(0.0);
-            account.setDateCreation(new Date());
-            account.setUser(u);
-            return account;
-        });
+                    Account newAccount = new Account();
+                    TypeAccount typeAccount = null;
+                    try{
+                        typeAccount = TypeAccount.valueOf(account.toUpperCase());
+                    }catch (Exception e){
+                        throw new NoTypeAccountException("Tipo de cuenta no permitido");
+                    }
+
+                    newAccount.setTypeAccount(typeAccount);
+                    newAccount.setNumberAccount(UUID.randomUUID().toString());
+                    newAccount.setBalance(0.0);
+                    newAccount.setDateCreation(new Date());
+                    newAccount.setUser(u);
+                    return newAccount;
+                });
 
         Mono<Long> countAccount = user.flatMap(u ->
-            accountRepository.countByUser(u)
+                accountRepository.countByUser(u)
         );
 
         return Mono.zip(accountSave, countAccount)
                 .flatMap(tuple -> {
-                    tuple.getT1().setExempt4x1000(tuple.getT2() == 0);
+                    tuple.getT1().setExempt4x1000(tuple.getT1().getTypeAccount() == TypeAccount.AHORRO && tuple.getT2() == 0);
 
                     return accountRepository.save(tuple.getT1())
-                            .map(account ->
-                                 ResponseEntity.status(HttpStatus.CREATED).build());
+                            .map(newAccount ->
+                                    ResponseEntity.status(HttpStatus.CREATED).build());
                 });
     }
 
