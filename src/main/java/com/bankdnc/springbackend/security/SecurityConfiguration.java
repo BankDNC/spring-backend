@@ -50,7 +50,7 @@ public class SecurityConfiguration {
                 .authorizeExchange(auth -> {
                     auth.pathMatchers(ENDPOINT_AUTH+REGISTER).permitAll();
                     auth.pathMatchers(ENDPOINT_AUTH+LOGIN).permitAll();
-                    auth.pathMatchers(HttpMethod.OPTIONS).authenticated();
+                    auth.pathMatchers(HttpMethod.OPTIONS).permitAll();
                     auth.anyExchange().authenticated();
                 })
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
