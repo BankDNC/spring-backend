@@ -62,6 +62,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Mono<ResponseEntity<TokenResponse>> login(LoginRequest loginRequest) {
         Mono<UserDetails> foundUser = userDetailsService.findByUsername(loginRequest.getEmail());
 
@@ -84,5 +85,11 @@ public class AuthServiceImpl implements AuthService {
                 })
                 .defaultIfEmpty(ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new TokenResponse()));
 
+    }
+
+    @Override
+    public Mono<User> getUser(String token) {
+        return Mono.just(jwtService.extractClaimsId(token.replace("Bearer ", "")))
+                .flatMap(id -> userRepository.findById(id));
     }
 }

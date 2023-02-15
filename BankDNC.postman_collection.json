@@ -40,6 +40,17 @@
 				},
 				{
 					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -92,7 +103,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/account/create/corriente",
+							"raw": "{{URL}}/api/v1/account/create/corrie",
 							"host": [
 								"{{URL}}"
 							],
@@ -101,7 +112,7 @@
 								"v1",
 								"account",
 								"create",
-								"corriente"
+								"corrie"
 							]
 						}
 					},
@@ -115,7 +126,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM4NjMwNCwiZXhwIjoxNjc2Mzg3NzQ0fQ.-jIyCaq4umDzCyFNWsgPzu58qPRkCYVC7gGwmdVcnrSNoMp1mUITgy2AvXUk_sLhMUzYuCY3qT_OnjXQGw14QQ",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5NDE2MSwiZXhwIjoxNjc2NDk1NjAxfQ.c5FZrsWmC3AkwwzVWreBws9l3Nx1yfcsj__0ye804SfozGnuPG3Rf36wpk3WJHjk5Dgf7UdXBpl3vGmc6fJ1KA",
 									"type": "string"
 								}
 							]
@@ -132,7 +143,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/account/create/ahorros",
+							"raw": "{{URL}}/api/v1/account/create/ahorro",
 							"host": [
 								"{{URL}}"
 							],
@@ -141,7 +152,7 @@
 								"v1",
 								"account",
 								"create",
-								"ahorros"
+								"ahorro"
 							]
 						}
 					},
@@ -158,7 +169,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM4NjMwNCwiZXhwIjoxNjc2Mzg3NzQ0fQ.-jIyCaq4umDzCyFNWsgPzu58qPRkCYVC7gGwmdVcnrSNoMp1mUITgy2AvXUk_sLhMUzYuCY3qT_OnjXQGw14QQ",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5NDE2MSwiZXhwIjoxNjc2NDk1NjAxfQ.c5FZrsWmC3AkwwzVWreBws9l3Nx1yfcsj__0ye804SfozGnuPG3Rf36wpk3WJHjk5Dgf7UdXBpl3vGmc6fJ1KA",
 									"type": "string"
 								}
 							]
@@ -183,6 +194,149 @@
 								"api",
 								"v1",
 								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5NDE2MSwiZXhwIjoxNjc2NDk1NjAxfQ.c5FZrsWmC3AkwwzVWreBws9l3Nx1yfcsj__0ye804SfozGnuPG3Rf36wpk3WJHjk5Dgf7UdXBpl3vGmc6fJ1KA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/account/63ed4576606f40520eb4d344",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"63ed4576606f40520eb4d344"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "load account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5NDE2MSwiZXhwIjoxNjc2NDk1NjAxfQ.c5FZrsWmC3AkwwzVWreBws9l3Nx1yfcsj__0ye804SfozGnuPG3Rf36wpk3WJHjk5Dgf7UdXBpl3vGmc6fJ1KA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/transaction/load?accountId=63ed4576606f40520eb4d344&amount=50000&description=Estoy cargando la cuenta wuey",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"load"
+							],
+							"query": [
+								{
+									"key": "accountId",
+									"value": "63ed4576606f40520eb4d344"
+								},
+								{
+									"key": "amount",
+									"value": "50000"
+								},
+								{
+									"key": "description",
+									"value": "Estoy cargando la cuenta wuey"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "history account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5NDE2MSwiZXhwIjoxNjc2NDk1NjAxfQ.c5FZrsWmC3AkwwzVWreBws9l3Nx1yfcsj__0ye804SfozGnuPG3Rf36wpk3WJHjk5Dgf7UdXBpl3vGmc6fJ1KA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/transaction/history?accountId=63ed4576606f40520eb4d344",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"history"
+							],
+							"query": [
+								{
+									"key": "accountId",
+									"value": "63ed4576606f40520eb4d344"
+								}
 							]
 						}
 					},
@@ -225,7 +379,8 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"pm.environment.set(\"URL\", \"localhost:8080\");"
+							"pm.environment.set(\"URL\", \"localhost:8080\");",
+							"pm.environment.set(\"TOKEN\", \"\");"
 						]
 					}
 				},
@@ -329,7 +484,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM4NjMwNCwiZXhwIjoxNjc2Mzg3NzQ0fQ.-jIyCaq4umDzCyFNWsgPzu58qPRkCYVC7gGwmdVcnrSNoMp1mUITgy2AvXUk_sLhMUzYuCY3qT_OnjXQGw14QQ",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTZiODc1MDYwZTc1NjVmNWMyNmExNiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM5MDY0NSwiZXhwIjoxNjc2MzkyMDg1fQ.cK-QT602eWQGJhjgHbgmSPS5YuSOALwzuo97tr58kNgukSC9Dp4EyuBVAgo-qM7y5rMjF21SZ3_rIfYTyUky8w",
 									"type": "string"
 								}
 							]
@@ -369,7 +524,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM4NjMwNCwiZXhwIjoxNjc2Mzg3NzQ0fQ.-jIyCaq4umDzCyFNWsgPzu58qPRkCYVC7gGwmdVcnrSNoMp1mUITgy2AvXUk_sLhMUzYuCY3qT_OnjXQGw14QQ",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTZiODc1MDYwZTc1NjVmNWMyNmExNiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM5MDY0NSwiZXhwIjoxNjc2MzkyMDg1fQ.cK-QT602eWQGJhjgHbgmSPS5YuSOALwzuo97tr58kNgukSC9Dp4EyuBVAgo-qM7y5rMjF21SZ3_rIfYTyUky8w",
 									"type": "string"
 								}
 							]
@@ -386,7 +541,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/account/create/ahorros",
+							"raw": "{{URL}}/api/v1/account/create/ahorro",
 							"host": [
 								"{{URL}}"
 							],
@@ -395,7 +550,7 @@
 								"v1",
 								"account",
 								"create",
-								"ahorros"
+								"ahorro"
 							]
 						}
 					},
@@ -412,7 +567,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTZiODc1MDYwZTc1NjVmNWMyNmExNiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjA2NTM5NiwiZXhwIjoxNjc2MDY2ODM2fQ.6zWbGvdxJM93YPQ19kt6aoQTqf1e-ZCL744b5yCwx5rbExuuWCGTZbv43emfGzWAPylS_w-gOo87FAiM2JJsog",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTZiODc1MDYwZTc1NjVmNWMyNmExNiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM5MDY0NSwiZXhwIjoxNjc2MzkyMDg1fQ.cK-QT602eWQGJhjgHbgmSPS5YuSOALwzuo97tr58kNgukSC9Dp4EyuBVAgo-qM7y5rMjF21SZ3_rIfYTyUky8w",
 									"type": "string"
 								}
 							]
@@ -437,6 +592,149 @@
 								"api",
 								"v1",
 								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTZiODc1MDYwZTc1NjVmNWMyNmExNiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM5MDY0NSwiZXhwIjoxNjc2MzkyMDg1fQ.cK-QT602eWQGJhjgHbgmSPS5YuSOALwzuo97tr58kNgukSC9Dp4EyuBVAgo-qM7y5rMjF21SZ3_rIfYTyUky8w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/account/63e6b88e060e7565f5c26a17",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"63e6b88e060e7565f5c26a17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "load account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ4OTg4MSwiZXhwIjoxNjc2NDkxMzIxfQ.BKIrA0rUnBJdZTBJovXav-qGJXgMSSrtGJZ95wr1pngnJH7bsbvl2x6uxrQGuuqgY4V1RgqAa8aSDc6hgUrUig",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/transaction/load?accountId=63ed34ee81a4d36e9e600396&amount=50000&description=Estoy cargando la cuenta wuey",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"load"
+							],
+							"query": [
+								{
+									"key": "accountId",
+									"value": "63ed34ee81a4d36e9e600396"
+								},
+								{
+									"key": "amount",
+									"value": "50000"
+								},
+								{
+									"key": "description",
+									"value": "Estoy cargando la cuenta wuey"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "history account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5NDE2MSwiZXhwIjoxNjc2NDk1NjAxfQ.c5FZrsWmC3AkwwzVWreBws9l3Nx1yfcsj__0ye804SfozGnuPG3Rf36wpk3WJHjk5Dgf7UdXBpl3vGmc6fJ1KA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/transaction/history?accountId=63ed4576606f40520eb4d344",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"history"
+							],
+							"query": [
+								{
+									"key": "accountId",
+									"value": "63ed4576606f40520eb4d344"
+								}
 							]
 						}
 					},
