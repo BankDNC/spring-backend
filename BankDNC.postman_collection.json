@@ -86,7 +86,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjM4NjMwNCwiZXhwIjoxNjc2Mzg3NzQ0fQ.-jIyCaq4umDzCyFNWsgPzu58qPRkCYVC7gGwmdVcnrSNoMp1mUITgy2AvXUk_sLhMUzYuCY3qT_OnjXQGw14QQ",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5NTgzMCwiZXhwIjoxNjc2NDk3MjcwfQ.ZANvHG-7KGTbgxk4rhPY0zwitLChwCRETW831xoD5tJfWaG3UERXgsAGzIw7BB5vF_IZ_MNzzSPCgcd3r_EuCw",
 									"type": "string"
 								}
 							]
@@ -103,7 +103,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/v1/account/create/corrie",
+							"raw": "{{URL}}/api/v1/account/create/corriente",
 							"host": [
 								"{{URL}}"
 							],
@@ -112,7 +112,7 @@
 								"v1",
 								"account",
 								"create",
-								"corrie"
+								"corriente"
 							]
 						}
 					},
@@ -126,7 +126,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5NDE2MSwiZXhwIjoxNjc2NDk1NjAxfQ.c5FZrsWmC3AkwwzVWreBws9l3Nx1yfcsj__0ye804SfozGnuPG3Rf36wpk3WJHjk5Dgf7UdXBpl3vGmc6fJ1KA",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5NzQxNSwiZXhwIjoxNjc2NDk4ODU1fQ.MtwoaO78bpwb1-wYwlUcYtVrq8jbAiVPJfluov2r7byhDZkM5_DytO3T8mTFYOgZo0TKw2So5eM5H9gpQ1zM8Q",
 									"type": "string"
 								}
 							]
@@ -169,7 +169,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5NDE2MSwiZXhwIjoxNjc2NDk1NjAxfQ.c5FZrsWmC3AkwwzVWreBws9l3Nx1yfcsj__0ye804SfozGnuPG3Rf36wpk3WJHjk5Dgf7UdXBpl3vGmc6fJ1KA",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjUwMDEzNSwiZXhwIjoxNjc2NTAxNTc1fQ.BMbCooFK4nBcL4g1CSY_6d0lshFT-bEdq1zUGvZDxeYixDrs-ysBCeTSKbgVNC0mJglWFClHHKsX_eHnjtDVbw",
 									"type": "string"
 								}
 							]
@@ -288,6 +288,116 @@
 								{
 									"key": "description",
 									"value": "Estoy cargando la cuenta wuey"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transfer between account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5ODUyOSwiZXhwIjoxNjc2NDk5OTY5fQ.bHAFN_si-8gIDtU5oj77zmYOzTXN_xatN9B2HE3LmLvaYbcY8PC1WcoIAtvPjIBQ_2O1nUQ57yU6k8xeYV6KkQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/transaction/transfer?accountIdOrigin=63ed4576606f40520eb4d344&accountIdDestination=63ed4577606f40520eb4d345&amount=5000000&description=pruebas",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"transfer"
+							],
+							"query": [
+								{
+									"key": "accountIdOrigin",
+									"value": "63ed4576606f40520eb4d344"
+								},
+								{
+									"key": "accountIdDestination",
+									"value": "63ed4577606f40520eb4d345"
+								},
+								{
+									"key": "amount",
+									"value": "5000000"
+								},
+								{
+									"key": "description",
+									"value": "pruebas"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "withdraw account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjUwMDEzNSwiZXhwIjoxNjc2NTAxNTc1fQ.BMbCooFK4nBcL4g1CSY_6d0lshFT-bEdq1zUGvZDxeYixDrs-ysBCeTSKbgVNC0mJglWFClHHKsX_eHnjtDVbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/transaction/withdraw?accountId=63ed4577606f40520eb4d345&amount=50&description=pruebas",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"withdraw"
+							],
+							"query": [
+								{
+									"key": "accountId",
+									"value": "63ed4577606f40520eb4d345"
+								},
+								{
+									"key": "amount",
+									"value": "50"
+								},
+								{
+									"key": "description",
+									"value": "pruebas"
 								}
 							]
 						}
@@ -686,6 +796,116 @@
 								{
 									"key": "description",
 									"value": "Estoy cargando la cuenta wuey"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transfer between account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5ODUyOSwiZXhwIjoxNjc2NDk5OTY5fQ.bHAFN_si-8gIDtU5oj77zmYOzTXN_xatN9B2HE3LmLvaYbcY8PC1WcoIAtvPjIBQ_2O1nUQ57yU6k8xeYV6KkQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/transaction/transfer?accountIdOrigin=63ed4576606f40520eb4d344&accountIdDestination=63ed4577606f40520eb4d345&amount=5000000&description=pruebas",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"transfer"
+							],
+							"query": [
+								{
+									"key": "accountIdOrigin",
+									"value": "63ed4576606f40520eb4d344"
+								},
+								{
+									"key": "accountIdDestination",
+									"value": "63ed4577606f40520eb4d345"
+								},
+								{
+									"key": "amount",
+									"value": "5000000"
+								},
+								{
+									"key": "description",
+									"value": "pruebas"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "withdraw account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjUwMDEzNSwiZXhwIjoxNjc2NTAxNTc1fQ.BMbCooFK4nBcL4g1CSY_6d0lshFT-bEdq1zUGvZDxeYixDrs-ysBCeTSKbgVNC0mJglWFClHHKsX_eHnjtDVbw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/transaction/withdraw?accountId=63ed4577606f40520eb4d345&amount=50&description=pruebas",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"transaction",
+								"withdraw"
+							],
+							"query": [
+								{
+									"key": "accountId",
+									"value": "63ed4577606f40520eb4d345"
+								},
+								{
+									"key": "amount",
+									"value": "50"
+								},
+								{
+									"key": "description",
+									"value": "pruebas"
 								}
 							]
 						}
