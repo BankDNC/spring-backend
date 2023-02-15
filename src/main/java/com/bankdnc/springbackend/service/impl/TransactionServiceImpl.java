@@ -106,4 +106,33 @@ public class TransactionServiceImpl implements TransactionService {
                 })
                 .map(a -> ResponseEntity.ok().build());
     }
+
+    @Override
+    public Mono<ResponseEntity<Object>> withdraw(String token, String accountId, Double amount, String description) {
+        Mono<User> user = authService.getUser(token);
+        Mono<Account> account = accountService.getAccountById(user, accountId);
+
+        return account.flatMap(a -> {
+                    double totalAmount = amount;
+                    if(!a.isExempt4x1000()){
+                        totalAmount += (amount * 0.04);
+                    }
+                    if (a.getBalance() < totalAmount) {
+                        return Mono.error( new NoBalanceException("No tiene saldo suficiente"));
+                    }
+                    a.setBalance(a.getBalance() - totalAmount);
+                    return accountRepository.save(a);
+                })
+                .flatMap(a -> {
+                    TransactionAccount transactionAccount = new TransactionAccount();
+                    transactionAccount.setTypeTransaction(TypeTransaction.RETIRO);
+                    transactionAccount.setAmount(amount);
+                    transactionAccount.setAccountOrigin(a);
+                    transactionAccount.setDescription(description);
+                    transactionAccount.setDate(new Date());
+                    return transactionAccountRepository.save(transactionAccount);
+                })
+                .map(t -> ResponseEntity.ok().build())
+                .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
 }

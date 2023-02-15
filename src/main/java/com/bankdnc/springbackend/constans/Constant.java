@@ -16,4 +16,5 @@ public class Constant {
     public static final String LOAD_ACCOUNT = "/load";
     public static final String HISTORY = "/history";
     public static final String TRANSFER = "/transfer";
+    public static final String WITHDRAW = "/withdraw";
 }

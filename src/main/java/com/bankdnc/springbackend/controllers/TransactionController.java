@@ -39,4 +39,12 @@ public class TransactionController {
                                                     @RequestParam String description) {
         return transactionService.transfer(token, accountIdOrigin, accountIdDestination, amount, description);
     }
+
+    @PostMapping(WITHDRAW)
+    public Mono<ResponseEntity<Object>> withdraw(@RequestHeader("Authorization") String token,
+                                                 @RequestParam String accountId,
+                                                 @RequestParam Double amount,
+                                                 @RequestParam String description) {
+        return transactionService.withdraw(token, accountId, amount, description);
+    }
 }
