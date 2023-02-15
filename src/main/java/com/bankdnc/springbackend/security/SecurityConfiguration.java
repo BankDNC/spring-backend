@@ -3,6 +3,7 @@ package com.bankdnc.springbackend.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -49,6 +50,7 @@ public class SecurityConfiguration {
                 .authorizeExchange(auth -> {
                     auth.pathMatchers(ENDPOINT_AUTH+REGISTER).permitAll();
                     auth.pathMatchers(ENDPOINT_AUTH+LOGIN).permitAll();
+                    auth.pathMatchers(HttpMethod.OPTIONS).authenticated();
                     auth.anyExchange().authenticated();
                 })
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
@@ -62,9 +64,9 @@ public class SecurityConfiguration {
     @Bean
     public CorsWebFilter corsFilter(){
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedMethod("*");
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
+        config.addAllowedMethod(CorsConfiguration.ALL);
+        config.addAllowedOrigin(CorsConfiguration.ALL);
+        config.addAllowedHeader(CorsConfiguration.ALL);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
