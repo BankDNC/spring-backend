@@ -5,11 +5,10 @@ import com.bankdnc.springbackend.error.NoTypeAccountException;
 import com.bankdnc.springbackend.model.documents.Account;
 import com.bankdnc.springbackend.model.documents.User;
 import com.bankdnc.springbackend.model.repository.AccountRepository;
-import com.bankdnc.springbackend.model.repository.UserRepository;
 import com.bankdnc.springbackend.model.response.AccountEspResponse;
 import com.bankdnc.springbackend.model.response.AccountResponse;
-import com.bankdnc.springbackend.security.JwtService;
 import com.bankdnc.springbackend.service.AccountService;
+import com.bankdnc.springbackend.service.AuthService;
 import com.bankdnc.springbackend.utils.mappers.AccountMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,13 +25,12 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AccountServiceImpl implements AccountService {
 
-    private UserRepository userRepository;
+    private AuthService authService;
     private AccountRepository accountRepository;
-    private JwtService jwtService;
 
     @Override
     public Mono<ResponseEntity<List<AccountResponse>>> getAccounts(String token) {
-        Mono<User> user = getUser(token);
+        Mono<User> user = authService.getUser(token);
 
         return user
                 .flatMapMany(u -> accountRepository.findByUser(u))
@@ -45,7 +43,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Transactional
     public Mono<ResponseEntity> createAccount(String token, String account) {
-        Mono<User> user = getUser(token);
+        Mono<User> user = authService.getUser(token);
 
         Mono<Account> accountSave = user
                 .map(u -> {
@@ -81,18 +79,18 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Mono<ResponseEntity<AccountEspResponse>> getAccount(String token, String id) {
-        Mono<User> user = getUser(token);
+        Mono<User> user = authService.getUser(token);
 
         return user
-                .flatMap(u -> accountRepository.findByUserAndId(u, id))
+                .flatMap(u -> getAccountById(user, id))
                 .map(AccountMapper::accountToAccountEspResponse)
                 .map(accountEspResponse -> ResponseEntity.status(HttpStatus.OK).body(accountEspResponse))
                 .defaultIfEmpty(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 
     }
 
-    private Mono<User> getUser(String token) {
-        return Mono.just(jwtService.extractClaimsId(token.replace("Bearer ", "")))
-                .flatMap(id -> userRepository.findById(id));
+    @Override
+    public Mono<Account> getAccountById(Mono<User> user, String id) {
+        return accountRepository.findByUserAndId(user, id);
     }
 }
