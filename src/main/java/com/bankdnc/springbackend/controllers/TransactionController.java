@@ -1,13 +1,15 @@
 package com.bankdnc.springbackend.controllers;
 
+import com.bankdnc.springbackend.model.response.TransactionResponse;
 import com.bankdnc.springbackend.service.TransactionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
-import static com.bankdnc.springbackend.constans.Constant.ENDPOINT_TRANSACTION;
-import static com.bankdnc.springbackend.constans.Constant.LOAD_ACCOUNT;
+import java.util.List;
+
+import static com.bankdnc.springbackend.constans.Constant.*;
 
 @RestController
 @RequestMapping(ENDPOINT_TRANSACTION)
@@ -21,5 +23,11 @@ public class TransactionController {
                                                     @RequestParam Double amount,
                                                     @RequestParam String description) {
         return transactionService.loadAccount(token, accountId, amount, description);
+    }
+
+    @GetMapping(HISTORY)
+    public Mono<ResponseEntity<List<TransactionResponse>>> history(@RequestHeader("Authorization") String token,
+                                                                   @RequestParam String accountId) {
+        return transactionService.history(token, accountId);
     }
 }

@@ -6,14 +6,19 @@ import com.bankdnc.springbackend.model.documents.TransactionAccount;
 import com.bankdnc.springbackend.model.documents.User;
 import com.bankdnc.springbackend.model.repository.AccountRepository;
 import com.bankdnc.springbackend.model.repository.TransactionAccountRepository;
+import com.bankdnc.springbackend.model.response.TransactionResponse;
 import com.bankdnc.springbackend.service.AccountService;
 import com.bankdnc.springbackend.service.AuthService;
 import com.bankdnc.springbackend.service.TransactionService;
+import com.bankdnc.springbackend.utils.mappers.TransactionMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
+
+import java.util.Date;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -29,12 +34,8 @@ public class TransactionServiceImpl implements TransactionService {
         Mono<User> user = authService.getUser(token);
         Mono<Account> account = accountService.getAccountById(user, accountId);
 
-        return Mono.zip(user, account)
-                .flatMap(tuple -> {
-                    User u = tuple.getT1();
-                    Account a = tuple.getT2();
+        return account.flatMap(a -> {
                     a.setBalance(a.getBalance() + amount);
-                    a.setUser(u);
                     return accountRepository.save(a);
                 })
                 .flatMap(a -> {
@@ -42,9 +43,26 @@ public class TransactionServiceImpl implements TransactionService {
                     transactionAccount.setTypeTransaction(TypeTransaction.DEPOSITO);
                     transactionAccount.setAmount(amount);
                     transactionAccount.setAccountDestination(a);
+                    transactionAccount.setDescription(description);
+                    transactionAccount.setDate(new Date());
                     return transactionAccountRepository.save(transactionAccount);
                 })
                 .map(t -> ResponseEntity.ok().build())
+                .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
+
+    @Override
+    public Mono<ResponseEntity<List<TransactionResponse>>> history(String token, String accountId) {
+        Mono<User> user = authService.getUser(token);
+        Mono<Account> account = accountService.getAccountById(user, accountId);
+
+        return account
+                .flatMapMany(a ->
+                     transactionAccountRepository.findByAccountOriginOrAccountDestination(a,a)
+                )
+                .map(TransactionMapper::transactionAccountToTransactionResponse)
+                .collectList()
+                .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 }
