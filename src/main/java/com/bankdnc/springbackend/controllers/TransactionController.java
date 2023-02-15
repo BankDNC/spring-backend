@@ -30,4 +30,13 @@ public class TransactionController {
                                                                    @RequestParam String accountId) {
         return transactionService.history(token, accountId);
     }
+
+    @PostMapping(TRANSFER)
+    public Mono<ResponseEntity<Object>> transfer(@RequestHeader("Authorization") String token,
+                                                    @RequestParam String accountIdOrigin,
+                                                    @RequestParam String accountIdDestination,
+                                                    @RequestParam Double amount,
+                                                    @RequestParam String description) {
+        return transactionService.transfer(token, accountIdOrigin, accountIdDestination, amount, description);
+    }
 }

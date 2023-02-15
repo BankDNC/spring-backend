@@ -1,6 +1,9 @@
 package com.bankdnc.springbackend.service.impl;
 
 import com.bankdnc.springbackend.constans.TypeTransaction;
+import com.bankdnc.springbackend.error.AccountNotFoundException;
+import com.bankdnc.springbackend.error.EqualsAccountException;
+import com.bankdnc.springbackend.error.NoBalanceException;
 import com.bankdnc.springbackend.model.documents.Account;
 import com.bankdnc.springbackend.model.documents.TransactionAccount;
 import com.bankdnc.springbackend.model.documents.User;
@@ -63,6 +66,45 @@ public class TransactionServiceImpl implements TransactionService {
                 .map(TransactionMapper::transactionAccountToTransactionResponse)
                 .collectList()
                 .map(ResponseEntity::ok)
+                .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
+
+    @Override
+    @Transactional
+    public Mono<ResponseEntity<Object>> transfer(String token, String accountIdOrigin, String accountIdDestination, Double amount, String description) {
+        if (accountIdOrigin.equals(accountIdDestination)) {
+            throw new EqualsAccountException("Las cuentas no pueden ser iguales");
+        }
+        Mono<User> user = authService.getUser(token);
+        Mono<Account> accountOrigin = accountService.getAccountById(user, accountIdOrigin)
+                .switchIfEmpty(Mono.error(new AccountNotFoundException("La cuenta de origen no existe")));
+        Mono<Account> accountDestination = accountService.getAccountById(user, accountIdDestination)
+                .switchIfEmpty(Mono.error(new AccountNotFoundException("La cuenta de destino no existe")));
+
+        return Mono.zip(accountOrigin, accountDestination)
+                .flatMap(tupla -> {
+                    Account origin = tupla.getT1();
+                    Account destination = tupla.getT2();
+                    if (origin.getBalance() < amount) {
+                        return Mono.error( new NoBalanceException("No tiene saldo suficiente"));
+                    }
+                    origin.setBalance(origin.getBalance() - amount);
+                    destination.setBalance(destination.getBalance() + amount);
+                    return Mono.zip(accountRepository.save(origin), accountRepository.save(destination));
+                })
+                .flatMap(tupla -> {
+                    Account origin = tupla.getT1();
+                    Account destination = tupla.getT2();
+                    TransactionAccount transactionAccount = new TransactionAccount();
+                    transactionAccount.setTypeTransaction(TypeTransaction.TRANSACCION);
+                    transactionAccount.setAmount(amount);
+                    transactionAccount.setAccountOrigin(origin);
+                    transactionAccount.setAccountDestination(destination);
+                    transactionAccount.setDescription(description);
+                    transactionAccount.setDate(new Date());
+                    return transactionAccountRepository.save(transactionAccount);
+                })
+                .map(a -> ResponseEntity.ok().build())
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 }

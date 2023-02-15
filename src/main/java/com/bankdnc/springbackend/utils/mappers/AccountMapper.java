@@ -14,7 +14,6 @@ public class AccountMapper {
         return AccountResponse.builder()
                 .id(account.getId())
                 .typeAccount(account.getTypeAccount())
-                .numberAccount(account.getNumberAccount())
                 .balance(account.getBalance())
                 .build();
     }
@@ -23,7 +22,6 @@ public class AccountMapper {
         return AccountEspResponse.builder()
                 .id(account.getId())
                 .typeAccount(account.getTypeAccount())
-                .numberAccount(account.getNumberAccount())
                 .balance(account.getBalance())
                 .isExempt4x1000(account.isExempt4x1000())
                 .dateCreation(account.getDateCreation())

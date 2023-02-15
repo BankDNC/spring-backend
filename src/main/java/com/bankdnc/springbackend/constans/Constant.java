@@ -15,4 +15,5 @@ public class Constant {
     public static final String ENDPOINT_TRANSACTION = API_V1+"/transaction";
     public static final String LOAD_ACCOUNT = "/load";
     public static final String HISTORY = "/history";
+    public static final String TRANSFER = "/transfer";
 }

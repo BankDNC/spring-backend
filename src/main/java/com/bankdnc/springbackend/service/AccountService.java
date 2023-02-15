@@ -16,4 +16,5 @@ public interface AccountService {
     Mono<ResponseEntity<AccountEspResponse>> getAccount(String token, String id);
 
     Mono<Account> getAccountById(Mono<User> user, String id);
+    Mono<Account> getAccountById(String id);
 }
