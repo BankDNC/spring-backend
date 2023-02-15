@@ -104,7 +104,6 @@ public class TransactionServiceImpl implements TransactionService {
                     transactionAccount.setDate(new Date());
                     return transactionAccountRepository.save(transactionAccount);
                 })
-                .map(a -> ResponseEntity.ok().build())
-                .defaultIfEmpty(ResponseEntity.notFound().build());
+                .map(a -> ResponseEntity.ok().build());
     }
 }
