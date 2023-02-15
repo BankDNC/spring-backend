@@ -11,7 +11,6 @@ import java.util.Date;
 public class AccountEspResponse {
     private String id;
     private TypeAccount typeAccount;
-    private String numberAccount;
     private Double balance;
     private boolean isExempt4x1000;
     private Date dateCreation;

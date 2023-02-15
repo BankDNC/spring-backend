@@ -19,7 +19,6 @@ import reactor.core.publisher.Mono;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -56,7 +55,6 @@ public class AccountServiceImpl implements AccountService {
                     }
 
                     newAccount.setTypeAccount(typeAccount);
-                    newAccount.setNumberAccount(UUID.randomUUID().toString());
                     newAccount.setBalance(0.0);
                     newAccount.setDateCreation(new Date());
                     newAccount.setUser(u);
@@ -92,5 +90,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Mono<Account> getAccountById(Mono<User> user, String id) {
         return accountRepository.findByUserAndId(user, id);
+    }
+
+    @Override
+    public Mono<Account> getAccountById(String id) {
+        return accountRepository.findById(id);
     }
 }

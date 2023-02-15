@@ -9,7 +9,6 @@ import lombok.Data;
 public class AccountResponse {
     private String id;
     private TypeAccount typeAccount;
-    private String numberAccount;
     private Double balance;
 
 }
