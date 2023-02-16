@@ -1,6 +1,7 @@
 package com.bankdnc.springbackend.service.impl;
 
 import com.bankdnc.springbackend.constans.TypeAccount;
+import com.bankdnc.springbackend.error.BalanceNotZeroException;
 import com.bankdnc.springbackend.error.NoTypeAccountException;
 import com.bankdnc.springbackend.model.documents.Account;
 import com.bankdnc.springbackend.model.documents.User;
@@ -95,5 +96,21 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Mono<Account> getAccountById(String id) {
         return accountRepository.findById(id);
+    }
+
+    @Override
+    public Mono<ResponseEntity<Object>> deleteAccount(String token, String id) {
+        Mono<User> user = authService.getUser(token);
+
+        return user
+                .flatMap(u -> getAccountById(user, id))
+                .flatMap(account ->{
+                  if (account.getBalance() == 0.0){
+                      return accountRepository.delete(account)
+                              .then(Mono.just(ResponseEntity.status(HttpStatus.OK).build()));
+                  }
+                  return Mono.error(new BalanceNotZeroException("No se puede eliminar una cuenta con saldo distinto de 0"));
+                })
+                .defaultIfEmpty(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 }

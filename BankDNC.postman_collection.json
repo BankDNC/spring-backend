@@ -169,7 +169,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjUwMDEzNSwiZXhwIjoxNjc2NTAxNTc1fQ.BMbCooFK4nBcL4g1CSY_6d0lshFT-bEdq1zUGvZDxeYixDrs-ysBCeTSKbgVNC0mJglWFClHHKsX_eHnjtDVbw",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjU4ODIwOCwiZXhwIjoxNjc2NTg5NjQ4fQ.7Z1lLcbDIMK3JfWs97ZjIAl8nVI0GxR37qOM0IASKtXxmVPnywrhe4jZSym1OT3UCTYEHBkMsav7noTbsZaGpQ",
 									"type": "string"
 								}
 							]
@@ -210,7 +210,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjQ5NDE2MSwiZXhwIjoxNjc2NDk1NjAxfQ.c5FZrsWmC3AkwwzVWreBws9l3Nx1yfcsj__0ye804SfozGnuPG3Rf36wpk3WJHjk5Dgf7UdXBpl3vGmc6fJ1KA",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjU4ODIwOCwiZXhwIjoxNjc2NTg5NjQ4fQ.7Z1lLcbDIMK3JfWs97ZjIAl8nVI0GxR37qOM0IASKtXxmVPnywrhe4jZSym1OT3UCTYEHBkMsav7noTbsZaGpQ",
 									"type": "string"
 								}
 							]
@@ -236,6 +236,45 @@
 								"v1",
 								"account",
 								"63ed4576606f40520eb4d344"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjU4ODIwOCwiZXhwIjoxNjc2NTg5NjQ4fQ.7Z1lLcbDIMK3JfWs97ZjIAl8nVI0GxR37qOM0IASKtXxmVPnywrhe4jZSym1OT3UCTYEHBkMsav7noTbsZaGpQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/account/63ed520d45849b0d0c437204",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"63ed520d45849b0d0c437204"
 							]
 						}
 					},
@@ -744,6 +783,45 @@
 								"v1",
 								"account",
 								"63e6b88e060e7565f5c26a17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJsYXN0TmFtZSI6Ik9iYW5kbyIsIm5hbWUiOiJDYXJsb3MiLCJpZCI6IjYzZTQxODUxMWNkZWZkMjc3M2JiYzMzMiIsImVtYWlsIjoiY29ycmVvb0Bjb3JyZS5jb20iLCJzdWIiOiJjb3JyZW9vQGNvcnJlLmNvbSIsImlhdCI6MTY3NjU4ODIwOCwiZXhwIjoxNjc2NTg5NjQ4fQ.7Z1lLcbDIMK3JfWs97ZjIAl8nVI0GxR37qOM0IASKtXxmVPnywrhe4jZSym1OT3UCTYEHBkMsav7noTbsZaGpQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/v1/account/63ed520d45849b0d0c437204",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"account",
+								"63ed520d45849b0d0c437204"
 							]
 						}
 					},

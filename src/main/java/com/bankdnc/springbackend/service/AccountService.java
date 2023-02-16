@@ -17,4 +17,6 @@ public interface AccountService {
 
     Mono<Account> getAccountById(Mono<User> user, String id);
     Mono<Account> getAccountById(String id);
+
+    Mono<ResponseEntity<Object>> deleteAccount(String token, String id);
 }
