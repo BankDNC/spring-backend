@@ -35,5 +35,10 @@ public class AccountsController {
         return accountService.getAccount(token, id);
     }
 
+    @DeleteMapping("{id}")
+    public Mono<ResponseEntity<Object>> deleteAccount(@RequestHeader("Authorization") String token, @PathVariable("id") String id) {
+        return accountService.deleteAccount(token, id);
+    }
+
 
 }

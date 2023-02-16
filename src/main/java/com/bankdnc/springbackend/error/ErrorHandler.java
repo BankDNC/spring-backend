@@ -15,7 +15,7 @@ public class ErrorHandler {
         return ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
     }
 
-    @ExceptionHandler({NoTypeAccountException.class, EqualsAccountException.class})
+    @ExceptionHandler({NoTypeAccountException.class, EqualsAccountException.class, BalanceNotZeroException.class})
     public ProblemDetail handleNoTypeAccountException(RuntimeException ex){
         return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_ACCEPTABLE, ex.getMessage());
     }
